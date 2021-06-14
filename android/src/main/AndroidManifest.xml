@@ -1,3 +1,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="dev.dsi.flutter_scroball">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+
+
+    <application
+        android:allowBackup="true">
+        <service
+            android:name=".ListenerService"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService"/>
+            </intent-filter>
+        </service>
+        <service android:name=".LoveTrackService"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9f73e09c31fe1db8981fe3cbcc5ec24aa4ffed81"/>
+    </application>
+
+
 </manifest>

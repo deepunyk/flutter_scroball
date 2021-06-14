@@ -7,8 +7,8 @@ class FlutterScroball {
   static const MethodChannel _channel =
       const MethodChannel('flutter_scroball');
 
-  static Future<String?> get platformVersion async {
-    final String? version = await _channel.invokeMethod('getPlatformVersion');
+  static Future<String?> get startListening async {
+    final String? version = await _channel.invokeMethod('startListening');
     return version;
   }
 }

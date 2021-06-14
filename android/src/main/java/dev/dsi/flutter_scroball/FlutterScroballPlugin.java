@@ -1,7 +1,11 @@
 package dev.dsi.flutter_scroball;
 
-import androidx.annotation.NonNull;
+import android.content.Intent;
 
+import androidx.annotation.NonNull;
+import dev.dsi.flutter_scroball.ScroballApplication;
+
+import dev.dsi.flutter_scroball.ListenerService;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -24,8 +28,10 @@ public class FlutterScroballPlugin implements FlutterPlugin, MethodCallHandler {
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
+    if (call.method.equals("startListening")) {
+      ScroballApplication application = (ScroballApplication) getApplication();
+      application.startListenerService();
+      result.success("Listening");
     } else {
       result.notImplemented();
     }
